@@ -10,11 +10,9 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="shopping-cart">Shopping cart</a>
       </li>
-      <li *ngIf="!user" class="nav-item">
-        <a class="nav-link" routerLink="login">Login</a>
-      </li>
-      <li *ngIf="user" ngbDropdown class="nav-item dropdown">
-        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+      <li *ngIf="user$ | async as user; else anonymousUser" ngbDropdown class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
+           aria-haspopup="true"
            aria-expanded="false">{{user.displayName}}</a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
           <a ngbDropdownItem class="dropdown-item" routerLink="/my/order">My Orders</a>
@@ -23,6 +21,11 @@
           <a ngbDropdownItem class="dropdown-item" (click)="logout()">Log out</a>
         </div>
       </li>
+      <ng-template #anonymousUser>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="login">Login</a>
+        </li>
+      </ng-template>
     </ul>
   </div>
 </nav>
