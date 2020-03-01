@@ -13,7 +13,7 @@ export class AppComponent {
               private router: Router,
               private userService: UserService
   ) {
-    auth.user$.subscribe(user => {
+    auth.stateUser$.subscribe(user => {
       if (user) {
         userService.save(user);
         const returnUrl = localStorage.getItem('returnUrl') || '';
