@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../core/services/auth.service';
-import { UserModel } from '../modes/user.model';
+import { UserModel } from '../core/modes/user.model';
 
 @Component({
   selector: 'app-bs-navbar',
