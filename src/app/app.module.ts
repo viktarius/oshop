@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
@@ -37,6 +38,7 @@ import { AdminProductFormComponent } from './admin/admin-product-form/admin-prod
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     NgbModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
