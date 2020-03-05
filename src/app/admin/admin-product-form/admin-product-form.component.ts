@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CustomValidators } from 'ngx-custom-validators';
+import { Observable } from 'rxjs';
+
 import { CategoryModel } from '../../core/modes/category.model';
 import { CategoryService } from '../../core/services/category.service';
-import { Observable } from 'rxjs';
 import { ProductService } from '../../core/services/product.service';
 
 @Component({
@@ -24,9 +26,9 @@ export class AdminProductFormComponent implements OnInit {
     this.categories$ = this.categoryService.getCategories();
     this.productForm = this.formBuilder.group({
       title: ['', [Validators.required]],
-      price: ['', [Validators.required]],
+      price: ['', [Validators.required, CustomValidators.min(0)]],
       category: ['', [Validators.required]],
-      imageUrl: ['', [Validators.required]]
+      imageUrl: ['', [Validators.required,  CustomValidators.url]]
     });
   }
 
