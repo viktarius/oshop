@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { CategoryModel } from '../../core/modes/category.model';
 import { CategoryService } from '../../core/services/category.service';
 import { ProductService } from '../../core/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-product-form',
@@ -16,7 +17,8 @@ export class AdminProductFormComponent implements OnInit {
   categories$: Observable<CategoryModel[]>;
   productForm: FormGroup;
 
-  constructor(private categoryService: CategoryService,
+  constructor(private router: Router,
+              private categoryService: CategoryService,
               private formBuilder: FormBuilder,
               private productService: ProductService
   ) {
@@ -28,12 +30,14 @@ export class AdminProductFormComponent implements OnInit {
       title: ['', [Validators.required]],
       price: ['', [Validators.required, CustomValidators.min(0)]],
       category: ['', [Validators.required]],
-      imageUrl: ['', [Validators.required,  CustomValidators.url]]
+      imageUrl: ['', [Validators.required, CustomValidators.url]]
     });
   }
 
   save(): void {
-    this.productService.create(this.productForm.value);
+    this.productService.create(this.productForm.value).then(() => {
+      this.router.navigate(['/admin/products']);
+    });
   }
 
   get title() {
