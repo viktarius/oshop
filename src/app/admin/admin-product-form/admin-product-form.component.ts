@@ -6,7 +6,9 @@ import { Observable } from 'rxjs';
 import { CategoryModel } from '../../core/modes/category.model';
 import { CategoryService } from '../../core/services/category.service';
 import { ProductService } from '../../core/services/product.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductModel } from '../../core/modes/product.model';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin-product-form',
@@ -16,8 +18,10 @@ import { Router } from '@angular/router';
 export class AdminProductFormComponent implements OnInit {
   categories$: Observable<CategoryModel[]>;
   productForm: FormGroup;
+  product: ProductModel;
 
   constructor(private router: Router,
+              private route: ActivatedRoute,
               private categoryService: CategoryService,
               private formBuilder: FormBuilder,
               private productService: ProductService
@@ -32,6 +36,14 @@ export class AdminProductFormComponent implements OnInit {
       category: ['', [Validators.required]],
       imageUrl: ['', [Validators.required, CustomValidators.url]]
     });
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.productService.get(id)
+        .pipe(take(1))
+        .subscribe(product => {
+          this.productForm.setValue(product);
+        });
+    }
   }
 
   save(): void {
