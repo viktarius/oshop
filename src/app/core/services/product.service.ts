@@ -13,8 +13,12 @@ export class ProductService {
   constructor(private db: AngularFireDatabase) {
   }
 
-  create(product: ProductModel) {
-    return this.db.list('/products').push(product);
+  create(product: ProductModel): void {
+    this.db.list('/products').push(product);
+  }
+
+  update(productId: string, product: ProductModel): void {
+    this.db.object('/products/' + productId).update(product);
   }
 
   getAll(): Observable<ProductModel[]> {

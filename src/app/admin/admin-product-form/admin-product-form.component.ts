@@ -7,7 +7,6 @@ import { CategoryModel } from '../../core/modes/category.model';
 import { CategoryService } from '../../core/services/category.service';
 import { ProductService } from '../../core/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductModel } from '../../core/modes/product.model';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -18,7 +17,7 @@ import { take } from 'rxjs/operators';
 export class AdminProductFormComponent implements OnInit {
   categories$: Observable<CategoryModel[]>;
   productForm: FormGroup;
-  product: ProductModel;
+  id: string;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -36,9 +35,9 @@ export class AdminProductFormComponent implements OnInit {
       category: ['', [Validators.required]],
       imageUrl: ['', [Validators.required, CustomValidators.url]]
     });
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.productService.get(id)
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id) {
+      this.productService.get(this.id)
         .pipe(take(1))
         .subscribe(product => {
           this.productForm.setValue(product);
@@ -47,9 +46,12 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   save(): void {
-    this.productService.create(this.productForm.value).then(() => {
-      this.router.navigate(['/admin/products']);
-    });
+    if (this.id) {
+      this.productService.update(this.id, this.productForm.value);
+    } else {
+      this.productService.create(this.productForm.value);
+    }
+    this.router.navigate(['/admin/products']);
   }
 
   get title() {
