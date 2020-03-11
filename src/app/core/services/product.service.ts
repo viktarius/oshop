@@ -21,6 +21,10 @@ export class ProductService {
     this.db.object('/products/' + productId).update(product);
   }
 
+  delete(productId: string): void {
+    this.db.object('/products/' + productId).remove();
+  }
+
   getAll(): Observable<ProductModel[]> {
     return this.db.object('/products').valueChanges().pipe(
       map(convertToArray)
