@@ -1,7 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../../core/services/product.service';
 import { ProductModel } from '../../core/modes/product.model';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-admin-products',
@@ -9,15 +11,23 @@ import { ProductModel } from '../../core/modes/product.model';
   styleUrls: ['./admin-products.component.scss']
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  dataSource: MatTableDataSource<ProductModel>;
   subscription: Subscription;
+
   products: ProductModel[];
   filterProducts: ProductModel[];
   displayedColumns: string[] = ['title', 'price', 'edit'];
+
   constructor(private productService: ProductService) {
   }
 
   ngOnInit(): void {
-    this.subscription = this.productService.getAll().subscribe(products => this.filterProducts = this.products = products);
+    this.subscription = this.productService.getAll().subscribe(products => {
+      this.dataSource = new MatTableDataSource(products);
+      this.dataSource.sort = this.sort;
+      this.products = products;
+    });
   }
 
   filter(query: string) {
