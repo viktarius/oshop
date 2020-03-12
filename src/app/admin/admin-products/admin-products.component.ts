@@ -18,7 +18,6 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   products: ProductModel[];
-  filterProducts: ProductModel[];
   displayedColumns: string[] = ['title', 'price', 'edit'];
 
   constructor(private productService: ProductService) {
@@ -34,9 +33,9 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   }
 
   filter(query: string) {
-    this.filterProducts = (query) ?
-      this.products.filter(product => product.title.toLowerCase().includes(query.toLowerCase())) :
-      this.products;
+    if (query) {
+      this.dataSource.filter = query.trim().toLowerCase();
+    }
   }
 
   ngOnDestroy(): void {
