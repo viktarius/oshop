@@ -35,6 +35,8 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   filter(query: string) {
     if (query) {
       this.dataSource.filter = query.trim().toLowerCase();
+    } else {
+      this.dataSource.filter = '';
     }
   }
 
