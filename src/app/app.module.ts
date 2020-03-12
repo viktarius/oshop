@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminProductFormComponent } from './admin/admin-product-form/admin-product-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { MatSortModule } from '@angular/material/sort';
     AngularFireAuthModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
