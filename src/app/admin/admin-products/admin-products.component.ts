@@ -12,7 +12,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   products: ProductModel[];
   filterProducts: ProductModel[];
-
+  displayedColumns: string[] = ['title', 'price', 'edit'];
   constructor(private productService: ProductService) {
   }
 
