@@ -24,6 +24,11 @@ import { AdminProductFormComponent } from './admin/admin-product-form/admin-prod
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { HeaderComponent } from './header/header.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AdminOrdersComponent,
     ShoppingCartComponent,
     LoginComponent,
-    AdminProductFormComponent
+    AdminProductFormComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     BrowserAnimationsModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
