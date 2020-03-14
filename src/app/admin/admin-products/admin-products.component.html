@@ -1,9 +1,8 @@
-<p>
-  <a routerLink="/admin/products/new" class="btn btn-primary">New product</a>
-</p>
-<p>
-  <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search..."/>
-</p>
+<button mat-raised-button color="primary" routerLink="/admin/products/new">New product</button>
+<mat-form-field class="full-width">
+  <mat-label>Search</mat-label>
+  <input matInput #query (keyup)="filter(query.value)" placeholder="Ex. Banana" value="">
+</mat-form-field>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="title">

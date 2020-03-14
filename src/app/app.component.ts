@@ -9,7 +9,7 @@ import { UserService } from './core/services/user.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  theme = true;
+  theme = false;
 
   constructor(private auth: AuthService,
               private router: Router,
