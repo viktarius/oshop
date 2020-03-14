@@ -9,7 +9,7 @@ import { AuthService } from '../core/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   @Input() theme;
-  @Output() themeChange: EventEmitter<boolean> = new EventEmitter();
+  @Output() onThemeChange: EventEmitter<boolean> = new EventEmitter();
 
   user: UserModel;
 
@@ -24,8 +24,8 @@ export class HeaderComponent implements OnInit {
     this.auth.logout();
   }
 
-  onThemeChange() {
-    return this.themeChange.emit(!this.theme);
+  themeChange() {
+    return this.onThemeChange.emit(!this.theme);
   }
 
 }

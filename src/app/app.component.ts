@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  changeTheme(): void {
-    this.theme = !this.theme;
+  onThemeChange(theme: boolean): void {
+    this.theme = theme;
   }
 }
