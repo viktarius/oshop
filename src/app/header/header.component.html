@@ -4,17 +4,11 @@
       <button mat-button routerLink="">Oshop</button>
       <button mat-button routerLink="shopping-cart">Shopping cart</button>
 
-      <button *ngIf="user; else anonymousUser" mat-button [matMenuTriggerFor]="menu">{{user.name}}</button>
-      <ng-template #anonymousUser>
-        <button mat-button routerLink="login">Login</button>
-      </ng-template>
+      <button *ngIf="user" mat-button routerLink="/my/order">My Orders</button>
+      <button *ngIf="user && user.isAdmin" mat-button [matMenuTriggerFor]="menu">Admin</button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="/my/order">My Orders</button>
-        <ng-template [ngIf]="user && user.isAdmin">
-          <button mat-menu-item routerLink="/admin/orders">Manage Orders</button>
-          <button mat-menu-item routerLink="/admin/products">Manage Products</button>
-        </ng-template>
-        <button mat-menu-item (click)="logout()">Log out</button>
+        <button mat-menu-item routerLink="/admin/orders">Manage Orders</button>
+        <button mat-menu-item routerLink="/admin/products">Manage Products</button>
       </mat-menu>
     </nav>
 
@@ -25,5 +19,7 @@
         {{theme ? 'brightness_2' : 'brightness_5'}}
       </mat-icon>
     </button>
+    <button *ngIf="!user" mat-button routerLink="login">Login</button>
+    <button *ngIf="user" mat-button (click)="logout()">Log out</button>
   </mat-toolbar-row>
 </mat-toolbar>

@@ -10,7 +10,6 @@ import {MatTableModule} from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { CheckOutComponent } from './check-out/check-out.component';
@@ -34,7 +33,6 @@ import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
-    BsNavbarComponent,
     HomeComponent,
     ProductsComponent,
     CheckOutComponent,
