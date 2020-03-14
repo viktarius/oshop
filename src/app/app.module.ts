@@ -29,6 +29,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from './header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -46,23 +47,24 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     AdminProductFormComponent,
     HeaderComponent
   ],
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    NgbModule,
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    BrowserAnimationsModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatToolbarModule
-  ],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        NgbModule,
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule,
+        AngularFireAuthModule,
+        BrowserAnimationsModule,
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule,
+        MatMenuModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatIconModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

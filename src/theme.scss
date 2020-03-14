@@ -8,8 +8,11 @@ $dark-accent: mat-palette($mat-pink);
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent,);
 
 .dark-theme {
-  @include angular-material-theme($dark-theme);
+  $foreground: map-get($dark-theme, foreground);
+  $text: map-get($foreground, text);
+  color: $text;
   height: 100%;
+  @include angular-material-theme($dark-theme);
 }
 
 .dark-background {
@@ -24,8 +27,11 @@ $light-accent: mat-palette($mat-gray, 200);
 $light-theme: mat-light-theme($light-primary, $light-accent);
 
 .light-theme {
-  @include angular-material-theme($light-theme);
+  $foreground: map-get($light-theme, foreground);
+  $text: map-get($foreground, text);
+  color: $text;
   height: 100%;
+  @include angular-material-theme($light-theme);
 }
 
 .light-background{
