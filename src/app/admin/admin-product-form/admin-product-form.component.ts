@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ngx-custom-validators';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 import { CategoryModel } from '../../core/modes/category.model';
 import { CategoryService } from '../../core/services/category.service';
 import { ProductService } from '../../core/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { MyErrorStateMatcher } from '../../core/helpers/error-state-matcher';
 
 @Component({
   selector: 'app-admin-product-form',
@@ -15,6 +16,7 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./admin-product-form.component.scss']
 })
 export class AdminProductFormComponent implements OnInit {
+  matcher = new MyErrorStateMatcher();
   categories$: Observable<CategoryModel[]>;
   productForm: FormGroup;
   id: string;
@@ -46,12 +48,13 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   save(): void {
-    if (this.id) {
-      this.productService.update(this.id, this.productForm.value);
-    } else {
-      this.productService.create(this.productForm.value);
-    }
-    this.router.navigate(['/admin/products']);
+    console.log(this.productForm);
+    // if (this.id) {
+    //   this.productService.update(this.id, this.productForm.value);
+    // } else {
+    //   this.productService.create(this.productForm.value);
+    // }
+    // this.router.navigate(['/admin/products']);
   }
 
   delete(): void {

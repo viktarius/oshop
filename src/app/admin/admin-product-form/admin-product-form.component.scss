@@ -1,0 +1,23 @@
+.product-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  &--card{
+    h3{
+      margin: 0 16px;
+    }
+  }
+}
+
+form {
+  width: 100%;
+}
+
+.card {
+  max-width: 400px;
+}
+
+.full-width {
+  width: 100%;
+}

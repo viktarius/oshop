@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="docs-navbar-header">
+  <mat-toolbar-row>
+    <nav>
+      <button mat-button routerLink="">Oshop</button>
+      <button mat-button routerLink="shopping-cart">Shopping cart</button>
+
+      <button *ngIf="user" mat-button routerLink="/my/order">My Orders</button>
+      <button *ngIf="user && user.isAdmin" mat-button [matMenuTriggerFor]="menu">Admin</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/admin/orders">Manage Orders</button>
+        <button mat-menu-item routerLink="/admin/products">Manage Products</button>
+      </mat-menu>
+    </nav>
+
+    <span class="spacer"></span>
+
+    <button mat-button (click)="themeChange()">
+      <mat-icon aria-hidden="false" aria-label="Example thumbs up SVG icon">
+        {{theme ? 'brightness_2' : 'brightness_5'}}
+      </mat-icon>
+    </button>
+    <button *ngIf="!user" mat-button routerLink="login">Login</button>
+    <button *ngIf="user" mat-button (click)="logout()">Log out</button>
+  </mat-toolbar-row>
+</mat-toolbar>
