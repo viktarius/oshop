@@ -1,54 +1,71 @@
-<div class="row">
-  <div class="col-md-6">
+<mat-grid-list cols="2">
+  <mat-grid-tile>
     <form [formGroup]="productForm" (ngSubmit)="save()">
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input id="title" formControlName="title" type="text" class="form-control">
-        <div class="alert alert-danger" *ngIf="title.invalid && title.touched">
-          Title is required.
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="price">Price</label>
-        <div class="input-group-prepend">
-          <span class="input-group-text">$</span>
-          <input id="price" formControlName="price" type="number" class="form-control">
-        </div>
-        <div class="alert alert-danger" *ngIf="price.invalid && price.touched">
-          <div *ngIf="price.errors?.required">Price is required.</div>
-          <div *ngIf="price.errors?.min">Price should be great than 0.</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="category">Category</label>
-        <select id="category" class="form-control" formControlName="category">
-          <option value=""></option>
-          <option *ngFor="let category of categories$ | async" [ngValue]="category.$key">{{category.name}}</option>
-        </select>
-        <div class="alert alert-danger" *ngIf="category.invalid && category.touched">
-          Category is required.
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="imageUrl">Image URL</label>
-        <input id="imageUrl" formControlName="imageUrl" type="text" class="form-control">
-        <div class="alert alert-danger" *ngIf="imageUrl.invalid && imageUrl.touched">
-          <div *ngIf="imageUrl.errors?.required">Image URL is required.</div>
-          <div *ngIf="imageUrl.errors?.min">Should be valid URL.</div>
-        </div>
-      </div>
-      <button class="btn btn-primary">Save</button>
-      <button *ngIf="id" (click)="delete()" type="button" class="btn btn-danger">Delete</button>
+
+      <mat-form-field class="full-width">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" [errorStateMatcher]="matcher"
+               placeholder="Ex. Banana">
+        <mat-error *ngIf="title.invalid && title.touched">
+          Title is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Price</mat-label>
+        <span matPrefix>$ &nbsp;</span>
+        <input matInput formControlName="price" [errorStateMatcher]="matcher"
+               placeholder="Ex. 10">
+        <mat-error *ngIf="!price.errors?.required">
+          Price is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="price.errors?.min">
+          Price should be <strong>great than</strong> 0.
+        </mat-error>
+
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Category</mat-label>
+        <mat-select value="" formControlName="category">
+          <mat-option value=""></mat-option>
+          <mat-option *ngFor="let category of categories$ | async" value="category.$key">{{category.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="category.invalid && category.touched">
+          Category is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Image URL</mat-label>
+        <input matInput formControlName="imageUrl" [errorStateMatcher]="matcher"
+               placeholder="Ex. https://example.com">
+        <mat-error *ngIf="imageUrl.errors?.required">
+          Image URL is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="imageUrl.errors?.url">
+          Should be <strong>valid</strong> URL.
+        </mat-error>
+
+      </mat-form-field>
+
+      <button mat-raised-button color="primary">Save</button>
+      <button mat-raised-button color="warn" *ngIf="id" (click)="delete()" type="button">Delete</button>
     </form>
-  </div>
-  <div class="col-md-6">
-    <div class="card" style="width: 18rem;">
-      <img [src]="imageUrl.value" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">{{title.value}}</h5>
-        <p class="card-text">{{category.value}}</p>
-        <p class="card-text">{{price.value | currency: 'USD': true}}</p>
-      </div>
-    </div>
-  </div>
-</div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+
+    <mat-card class="card">
+      <img mat-card-image [src]="imageUrl.value">
+      <mat-card-header>
+        <mat-card-title>{{title.value}}</mat-card-title>
+        <mat-card-subtitle>{{category.value}}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <h3>{{price.value | currency: 'USD': true}}</h3>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>

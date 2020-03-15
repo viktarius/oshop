@@ -30,6 +30,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import { MatInputModule } from '@angular/material/input';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatGridListModule,
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
