@@ -1,5 +1,5 @@
-<mat-grid-list cols="2">
-  <mat-grid-tile>
+<div class="product-form">
+  <div class="product-form--form">
     <form [formGroup]="productForm" (ngSubmit)="save()">
 
       <mat-form-field class="full-width">
@@ -29,7 +29,7 @@
         <mat-label>Category</mat-label>
         <mat-select value="" formControlName="category">
           <mat-option value=""></mat-option>
-          <mat-option *ngFor="let category of categories$ | async" value="category.$key">{{category.name}}</mat-option>
+          <mat-option *ngFor="let category of categories$ | async" [value]="category.$key">{{category.name}}</mat-option>
         </mat-select>
         <mat-error *ngIf="category.invalid && category.touched">
           Category is <strong>required</strong>
@@ -49,13 +49,12 @@
 
       </mat-form-field>
 
-      <button mat-raised-button color="primary">Save</button>
+      <button mat-raised-button [disabled]="!productForm.valid" color="primary">Save</button>
       <button mat-raised-button color="warn" *ngIf="id" (click)="delete()" type="button">Delete</button>
     </form>
-  </mat-grid-tile>
-  <mat-grid-tile>
-
-    <mat-card class="card">
+  </div>
+  <div class="product-form--card">
+    <mat-card *ngIf="productForm.valid; else noValidForm" class="card">
       <img mat-card-image [src]="imageUrl.value">
       <mat-card-header>
         <mat-card-title>{{title.value}}</mat-card-title>
@@ -66,6 +65,10 @@
         <h3>{{price.value | currency: 'USD': true}}</h3>
       </mat-card-content>
     </mat-card>
+    <ng-template #noValidForm>
+      <h3>Correctly fill in all form fields</h3>
+    </ng-template>
+  </div>
+</div>
 
-  </mat-grid-tile>
-</mat-grid-list>
+

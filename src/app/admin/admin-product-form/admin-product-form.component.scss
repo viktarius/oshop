@@ -1,11 +1,23 @@
-.card{
-  max-width: 400px;
+.product-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  &--card{
+    h3{
+      margin: 0 16px;
+    }
+  }
 }
 
-form{
+form {
   width: 100%;
 }
 
-.full-width{
+.card {
+  max-width: 400px;
+}
+
+.full-width {
   width: 100%;
 }

@@ -48,12 +48,13 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   save(): void {
-    if (this.id) {
-      this.productService.update(this.id, this.productForm.value);
-    } else {
-      this.productService.create(this.productForm.value);
-    }
-    this.router.navigate(['/admin/products']);
+    console.log(this.productForm);
+    // if (this.id) {
+    //   this.productService.update(this.id, this.productForm.value);
+    // } else {
+    //   this.productService.create(this.productForm.value);
+    // }
+    // this.router.navigate(['/admin/products']);
   }
 
   delete(): void {
