@@ -1,1 +1,16 @@
-<p>products works!</p>
+<div class="products">
+  <div class="product-card" *ngFor="let p of products$| async">
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{p.title}}</mat-card-title>
+        <mat-card-subtitle>{{p.price | currency: "USD": true}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{p.imageUrl}}" alt="{{p.title}}">
+      <mat-card-actions>
+        <button mat-raised-button color="primary">Add to card</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+

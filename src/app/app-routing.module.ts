@@ -13,7 +13,7 @@ import { AuthGuard } from './core/helpers/auth-guard.service';
 import { AdminAuthGuard } from './core/helpers/admin-auth-guard.service';
 import { AdminProductFormComponent } from './admin/admin-product-form/admin-product-form.component';
 
-const routes: Routes = [{path: '', component: HomeComponent},
+const routes: Routes = [{path: '', component: ProductsComponent},
   {path: 'products', component: ProductsComponent},
   {path: 'shopping-cart', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},
