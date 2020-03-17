@@ -30,7 +30,7 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categories$ = this.categoryService.getCategories();
+    this.categories$ = this.categoryService.getAll();
     this.productForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       price: ['', [Validators.required, CustomValidators.min(0)]],

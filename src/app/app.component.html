@@ -1,4 +1,4 @@
-<div [ngClass]="{'light-theme light-background': theme, 'dark-theme dark-background':!theme}">
+<div [ngClass]="{'theme light-theme light-background': theme, 'theme dark-theme dark-background':!theme}">
   <app-header [theme]="theme" (onThemeChange)="onThemeChange($event)"></app-header>
   <main>
     <router-outlet></router-outlet>

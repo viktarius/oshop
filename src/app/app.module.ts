@@ -32,6 +32,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -48,27 +49,28 @@ import { MatSelectModule } from '@angular/material/select';
     AdminProductFormComponent,
     HeaderComponent
   ],
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    BrowserAnimationsModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatInputModule,
-    MatGridListModule,
-    MatCardModule,
-    MatSelectModule
-  ],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule,
+        AngularFireAuthModule,
+        BrowserAnimationsModule,
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule,
+        MatMenuModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatInputModule,
+        MatGridListModule,
+        MatCardModule,
+        MatSelectModule,
+        MatListModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
