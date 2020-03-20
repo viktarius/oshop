@@ -11,7 +11,9 @@ import { CategoryModel } from '../core/modes/category.model';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  products$: Observable<ProductModel[]>;
+  products: ProductModel[] = [];
+  filterProducts: ProductModel[] = [];
+  // products$: Observable<ProductModel[]>;
   categories$: Observable<CategoryModel[]>;
 
   constructor(private productService: ProductService,
@@ -19,8 +21,17 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products$ = this.productService.getAll();
+    this.productService.getAll().subscribe(products => this.filterProducts = this.products = products);
     this.categories$ = this.categoryService.getAll();
+  }
+
+  categoriesChange(categories): void {
+    const selectedCategories = categories.selectedOptions.selected.map(selected => selected.value);
+    if (!selectedCategories.length) {
+      this.filterProducts = this.products;
+      return;
+    }
+    this.filterProducts = this.products.filter(product => selectedCategories.includes(product.category));
   }
 
 }
