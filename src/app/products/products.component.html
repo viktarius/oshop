@@ -7,23 +7,7 @@
 </div>
 <div class="products">
   <div class="product-card" *ngFor="let p of filterProducts">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title><h2 class="mat-h2">{{p.title}}</h2></mat-card-title>
-        <mat-card-subtitle>{{p.category}}</mat-card-subtitle>
-      </mat-card-header>
-      <div class="card-image-wrapper">
-        <img mat-card-image src="{{p.imageUrl}}" alt="{{p.title}}">
-      </div>
-      <mat-card-content>
-        <p class="mat-subheading-2">
-          {{p.price | currency: 'USD': true}}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="primary">Add to card</button>
-      </mat-card-actions>
-    </mat-card>
+    <app-product-card [product]="p" [actionItems]="true"></app-product-card>
   </div>
 </div>
 

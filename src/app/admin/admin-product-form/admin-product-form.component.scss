@@ -1,12 +1,9 @@
 .product-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
-  justify-items: center;
-  &--card{
-    h3{
-      margin: 0 16px;
-    }
+
+  &--card {
+    margin: 0 20px;
   }
 }
 
@@ -14,10 +11,22 @@ form {
   width: 100%;
 }
 
-.card {
-  max-width: 400px;
+.card-wrapper {
+  max-width: 500px;
+  margin: auto;
 }
 
 .full-width {
   width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .product-form {
+    grid-template-columns: 1fr;
+
+    &--card {
+      margin: 20px 0;
+    }
+
+  }
 }

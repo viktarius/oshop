@@ -29,7 +29,8 @@
         <mat-label>Category</mat-label>
         <mat-select value="" formControlName="category">
           <mat-option value=""></mat-option>
-          <mat-option *ngFor="let category of categories$ | async" [value]="category.$key">{{category.name}}</mat-option>
+          <mat-option *ngFor="let category of categories$ | async"
+                      [value]="category.$key">{{category.name}}</mat-option>
         </mat-select>
         <mat-error *ngIf="category.invalid && category.touched">
           Category is <strong>required</strong>
@@ -54,20 +55,12 @@
     </form>
   </div>
   <div class="product-form--card">
-    <mat-card *ngIf="productForm.valid; else noValidForm" class="card">
-      <img mat-card-image [src]="imageUrl.value">
-      <mat-card-header>
-        <mat-card-title>{{title.value}}</mat-card-title>
-        <mat-card-subtitle>{{category.value}}</mat-card-subtitle>
-      </mat-card-header>
-
-      <mat-card-content>
-        <h3>{{price.value | currency: 'USD': true}}</h3>
-      </mat-card-content>
-    </mat-card>
-    <ng-template #noValidForm>
-      <h3>Correctly fill in all form fields</h3>
-    </ng-template>
+    <div class="card-wrapper">
+      <app-product-card *ngIf="productForm.valid; else noValidForm" [product]="productForm.value"></app-product-card>
+      <ng-template #noValidForm>
+        <h3>Correctly fill in all form fields</h3>
+      </ng-template>
+    </div>
   </div>
 </div>
 

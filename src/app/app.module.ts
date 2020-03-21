@@ -33,6 +33,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
+import { ProductCardComponent } from './shared/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MatListModule } from '@angular/material/list';
     ShoppingCartComponent,
     LoginComponent,
     AdminProductFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProductCardComponent
   ],
     imports: [
         BrowserModule,
