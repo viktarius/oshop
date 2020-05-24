@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Product } from '../models/product';
-import { ShoppingCard } from '../models/shopping-card.model';
-import { take } from 'rxjs/operators';
+import { ShoppingCart } from '../models/shopping-cart.model';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShoppingCardService {
+
+export class ShoppingCartService {
 
   constructor(private db: AngularFireDatabase) {
   }
@@ -20,7 +21,10 @@ export class ShoppingCardService {
 
   async getCard() {
     const cardId = await this.getOrCreateCardId();
-    return this.db.object<ShoppingCard>('/shopping-cards/' + cardId);
+    return this.db.object<ShoppingCart>('/shopping-cards/' + cardId).valueChanges()
+      .pipe(
+        map(x => new ShoppingCart(x.items))
+      );
   }
 
   private async getOrCreateCardId(): Promise<string> {

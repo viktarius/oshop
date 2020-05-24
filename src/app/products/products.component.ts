@@ -4,7 +4,8 @@ import { Observable, Subscription } from 'rxjs';
 import { Product } from '../core/models/product';
 import { CategoryService } from '../core/services/category.service';
 import { CategoryModel } from '../core/models/category.model';
-import { ShoppingCardService } from '../core/services/shopping-card.service';
+import { ShoppingCartService } from '../core/services/shopping-cart.service';
+import { ShoppingCart } from '../core/models/shopping-cart.model';
 
 @Component({
   selector: 'app-products',
@@ -17,17 +18,17 @@ export class ProductsComponent implements OnInit, OnDestroy {
   filterProducts: Product[] = [];
   // products$: Observable<ProductModel[]>;
   categories$: Observable<CategoryModel[]>;
-  card;
+  card: ShoppingCart;
 
   constructor(private productService: ProductService,
               private categoryService: CategoryService,
-              private shoppingCardService: ShoppingCardService) {
+              private shoppingCardService: ShoppingCartService) {
   }
 
   async ngOnInit() {
     this.productService.getAll().subscribe(products => this.filterProducts = this.products = products);
     this.categories$ = this.categoryService.getAll();
-    this.subscription = (await this.shoppingCardService.getCard()).valueChanges()
+    this.subscription = (await this.shoppingCardService.getCard())
       .subscribe(card => this.card = card);
   }
 

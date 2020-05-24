@@ -7,10 +7,10 @@
         routerLink="shopping-cart"
       >
         Shopping cart
-        <span
+        <span *ngIf="cart$ | async as cart"
           matBadgeColor="warn"
           matBadgeOverlap="false"
-          [matBadge]="shoppingCardItemCount"
+          [matBadge]="cart.totalQuantity"
         ></span>
       </button>
 

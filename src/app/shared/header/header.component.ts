@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserModel } from '../../core/models/user.model';
 import { AuthService } from '../../core/services/auth.service';
-import { ShoppingCardService } from '../../core/services/shopping-card.service';
-import { ShoppingCard } from '../../core/models/shopping-card.model';
+import { ShoppingCartService } from '../../core/services/shopping-cart.service';
+import { ShoppingCart } from '../../core/models/shopping-cart.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -14,22 +15,15 @@ export class HeaderComponent implements OnInit {
   @Output() onThemeChange: EventEmitter<boolean> = new EventEmitter();
 
   user: UserModel;
-  card: ShoppingCard;
-  shoppingCardItemCount: number;
+  cart$: Observable<ShoppingCart>;
 
   constructor(private auth: AuthService,
-              private shoppingCardService: ShoppingCardService) {
+              private shoppingCardService: ShoppingCartService) {
   }
 
   async ngOnInit() {
     this.auth.user$.subscribe(user => this.user = user);
-    (await this.shoppingCardService.getCard()).valueChanges()
-      .subscribe(card => {
-        this.shoppingCardItemCount = 0;
-        for (const productId in card.items) {
-          this.shoppingCardItemCount += card.items[productId].quantity;
-        }
-      });
+    this.cart$ = await this.shoppingCardService.getCard();
   }
 
   logout() {
