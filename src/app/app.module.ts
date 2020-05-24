@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireAuthModule} from 'angularfire2/auth';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatTableModule} from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +32,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+import { ProductCardComponent } from './shared/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -47,30 +48,31 @@ import { MatSelectModule } from '@angular/material/select';
     ShoppingCartComponent,
     LoginComponent,
     AdminProductFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProductCardComponent
   ],
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    NgbModule,
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    BrowserAnimationsModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatInputModule,
-    MatGridListModule,
-    MatCardModule,
-    MatSelectModule
-  ],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule,
+        AngularFireAuthModule,
+        BrowserAnimationsModule,
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule,
+        MatMenuModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatInputModule,
+        MatGridListModule,
+        MatCardModule,
+        MatSelectModule,
+        MatListModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

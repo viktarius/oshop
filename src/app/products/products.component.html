@@ -1,1 +1,13 @@
-<p>products works!</p>
+<div class="categories">
+  <mat-selection-list #categories (click)="categoriesChange(categories)">
+    <mat-list-option *ngFor="let c of categories$ | async" [value]="c.$key">
+      {{c.name}}
+    </mat-list-option>
+  </mat-selection-list>
+</div>
+<div class="products">
+  <div class="product-card" *ngFor="let p of filterProducts">
+    <app-product-card [product]="p" [actionItems]="true"></app-product-card>
+  </div>
+</div>
+

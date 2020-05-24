@@ -30,7 +30,7 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categories$ = this.categoryService.getCategories();
+    this.categories$ = this.categoryService.getAll();
     this.productForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       price: ['', [Validators.required, CustomValidators.min(0)]],
@@ -48,13 +48,13 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   save(): void {
-    console.log(this.productForm);
-    // if (this.id) {
-    //   this.productService.update(this.id, this.productForm.value);
-    // } else {
-    //   this.productService.create(this.productForm.value);
-    // }
-    // this.router.navigate(['/admin/products']);
+    // console.log(this.productForm);
+    if (this.id) {
+      this.productService.update(this.id, this.productForm.value);
+    } else {
+      this.productService.create(this.productForm.value);
+    }
+    this.router.navigate(['/admin/products']);
   }
 
   delete(): void {

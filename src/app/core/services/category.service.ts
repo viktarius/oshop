@@ -13,7 +13,7 @@ export class CategoryService {
   constructor(private db: AngularFireDatabase) {
   }
 
-  getCategories(): Observable<CategoryModel[]> {
+  getAll(): Observable<CategoryModel[]> {
     return this.db.object('/categories').valueChanges().pipe(
       map(convertToArray));
   }
