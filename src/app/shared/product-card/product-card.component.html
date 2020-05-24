@@ -15,6 +15,11 @@
     </p>
   </mat-card-content>
   <mat-card-actions *ngIf="actionItems">
-    <button mat-raised-button color="primary">Add to card</button>
+    <button
+      mat-raised-button
+      color="primary"
+
+      (click)="addToCard(product)"
+    >Add to card</button>
   </mat-card-actions>
 </mat-card>

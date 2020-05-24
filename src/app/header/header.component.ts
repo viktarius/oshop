@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UserModel } from '../core/modes/user.model';
+import { UserModel } from '../core/models/user.model';
 import { AuthService } from '../core/services/auth.service';
 
 @Component({

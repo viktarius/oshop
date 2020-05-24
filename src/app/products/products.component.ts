@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../core/services/product.service';
 import { Observable } from 'rxjs';
-import { ProductModel } from '../core/modes/product.model';
+import { Product } from '../core/models/product';
 import { CategoryService } from '../core/services/category.service';
-import { CategoryModel } from '../core/modes/category.model';
+import { CategoryModel } from '../core/models/category.model';
 
 @Component({
   selector: 'app-products',
@@ -11,8 +11,8 @@ import { CategoryModel } from '../core/modes/category.model';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  products: ProductModel[] = [];
-  filterProducts: ProductModel[] = [];
+  products: Product[] = [];
+  filterProducts: Product[] = [];
   // products$: Observable<ProductModel[]>;
   categories$: Observable<CategoryModel[]>;
 
