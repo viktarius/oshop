@@ -14,11 +14,26 @@ export class ProductCardComponent {
   @Input()
   actionItems?: boolean;
 
+  @Input()
+  shoppingCard: any;
+
   constructor(private shoppingCardService: ShoppingCardService) {
   }
 
-  addToCard(product: Product): void {
-    this.shoppingCardService.addToCard(product);
+  addToCard(): void {
+    this.shoppingCardService.addToCard(this.product);
+  }
+
+  removeFromCard(): void {
+    this.shoppingCardService.removeFromCard(this.product);
+  }
+
+  getQuantity() {
+    if (!this.shoppingCard) {
+      return 0;
+    }
+    const items = this.shoppingCard.items[this.product.$key];
+    return items ? items.quantity : 0;
   }
 
 }
