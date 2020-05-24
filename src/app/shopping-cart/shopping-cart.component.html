@@ -1,5 +1,5 @@
 <h1>Shopping cart</h1>
-<ng-container>
+<ng-container *ngIf="cart">
   <p>You have {{cart.totalQuantity}} items in your shopping cart.</p>
 
   <table
