@@ -21,7 +21,7 @@ export class ShoppingCartService {
 
   async getCard() {
     const cardId = await this.getOrCreateCardId();
-    return this.db.object<ShoppingCart>('/shopping-cards/' + cardId).valueChanges()
+    return this.db.object<any>('/shopping-cards/' + cardId).valueChanges()
       .pipe(
         map(x => new ShoppingCart(x.items))
       );

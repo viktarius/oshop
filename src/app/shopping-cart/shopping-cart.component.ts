@@ -10,13 +10,25 @@ import { ShoppingCart } from '../core/models/shopping-cart.model';
 })
 export class ShoppingCartComponent implements OnInit {
   cart$: Observable<ShoppingCart>;
-  displayedColumns: string[] = ['title', 'quantity'];
+  cart: ShoppingCart;
+  displayedColumns: string[] = ['title', 'quantity', 'price'];
 
   constructor(private shoppingCardService: ShoppingCartService) {
   }
 
   async ngOnInit() {
     this.cart$ = await this.shoppingCardService.getCard();
+    this.cart$.subscribe(items => {
+      this.cart = items;
+    });
+  }
+
+  getTotalQuantity() {
+    return this.cart.items.reduce((acc, item) => acc += item.quantity, 0);
+  }
+
+  getTotalPrice() {
+    return this.cart.items.reduce((acc, item) => acc += item.totalPrice, 0);
   }
 
 }
