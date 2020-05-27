@@ -11,7 +11,7 @@ import { ShoppingCart } from '../core/models/shopping-cart.model';
 export class ShoppingCartComponent implements OnInit {
   cart$: Observable<ShoppingCart>;
   cart: ShoppingCart;
-  displayedColumns: string[] = ['title', 'quantity', 'price'];
+  displayedColumns: string[] = ['image', 'title', 'quantity', 'price'];
 
   constructor(private shoppingCardService: ShoppingCartService) {
   }

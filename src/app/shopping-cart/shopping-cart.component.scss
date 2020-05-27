@@ -1,8 +1,14 @@
-table{
-  width: 100%;
+:host {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.mat-column-title, .mat-column-quantity, .mat-column-price{
+table {
+  width: 80%;
+}
+
+.mat-column-title, .mat-column-quantity, .mat-column-price, .mat-column-image {
   word-wrap: break-word !important;
   white-space: unset !important;
   overflow-wrap: break-word;
@@ -15,18 +21,40 @@ table{
   hyphens: auto;
 }
 
-.mat-column-title {
-   flex: 0 0 30% !important;
-   width: 30% !important;
- }
+.mat-column-image {
+  flex: 0 0 15% !important;
+  width: 15% !important;
+  padding: 10px !important;
+}
 
-.mat-column-quantity {
-  padding: 0 5%;
+.mat-column-title {
   flex: 0 0 30% !important;
   width: 30% !important;
 }
 
+.mat-column-quantity {
+  padding: 0 5%;
+  flex: 0 0 25% !important;
+  width: 25% !important;
+  text-align: center;
+}
+
 .mat-column-price {
-  flex: 0 0 30% !important;
-  width: 30% !important;
+  flex: 0 0 25% !important;
+  width: 25% !important;
+  text-align: right;
+}
+
+.control-panel {
+  width: 80%;
+  display: flex;
+  padding: 10px;
+  align-items: flex-start;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-size: cover;
 }
