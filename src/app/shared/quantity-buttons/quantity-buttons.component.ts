@@ -4,16 +4,13 @@ import { ShoppingCartService } from '../../core/services/shopping-cart.service';
 import { ShoppingCart } from '../../core/models/shopping-cart.model';
 
 @Component({
-  selector: 'app-product-card',
-  templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.scss']
+  selector: 'quantity-buttons',
+  templateUrl: './quantity-buttons.component.html',
+  styleUrls: ['./quantity-buttons.component.scss']
 })
-export class ProductCardComponent {
+export class QuantityButtonsComponent {
   @Input()
   product: Product;
-
-  @Input()
-  actionItems?: boolean;
 
   @Input()
   shoppingCart: ShoppingCart;
@@ -23,5 +20,17 @@ export class ProductCardComponent {
 
   addToCard(): void {
     this.shoppingCardService.addToCard(this.product);
+  }
+
+  removeFromCard(): void {
+    this.shoppingCardService.removeFromCard(this.product);
+  }
+
+  getQuantity() {
+    if (!this.shoppingCart) {
+      return 0;
+    }
+    const items = this.shoppingCart.items[this.product.$key];
+    return items ? items.quantity : 0;
   }
 }
