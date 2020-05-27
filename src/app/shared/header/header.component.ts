@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UserModel } from '../core/modes/user.model';
-import { AuthService } from '../core/services/auth.service';
+import { UserModel } from '../../core/models/user.model';
+import { AuthService } from '../../core/services/auth.service';
+import { ShoppingCartService } from '../../core/services/shopping-cart.service';
+import { ShoppingCart } from '../../core/models/shopping-cart.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -12,12 +15,15 @@ export class HeaderComponent implements OnInit {
   @Output() onThemeChange: EventEmitter<boolean> = new EventEmitter();
 
   user: UserModel;
+  cart$: Observable<ShoppingCart>;
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService,
+              private shoppingCardService: ShoppingCartService) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.auth.user$.subscribe(user => this.user = user);
+    this.cart$ = await this.shoppingCardService.getCart();
   }
 
   logout() {

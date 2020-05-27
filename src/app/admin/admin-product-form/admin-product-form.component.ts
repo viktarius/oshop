@@ -4,7 +4,7 @@ import { CustomValidators } from 'ngx-custom-validators';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { CategoryModel } from '../../core/modes/category.model';
+import { CategoryModel } from '../../core/models/category.model';
 import { CategoryService } from '../../core/services/category.service';
 import { ProductService } from '../../core/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';

@@ -1,4 +1,4 @@
-export interface ProductModel {
+export interface Product {
   $key: string;
   title: string;
   category: string;

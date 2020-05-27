@@ -2,7 +2,17 @@
   <mat-toolbar-row>
     <nav>
       <button mat-button routerLink="">Oshop</button>
-      <button mat-button routerLink="shopping-cart">Shopping cart</button>
+      <button
+        mat-button
+        routerLink="shopping-cart"
+      >
+        Shopping cart
+        <span *ngIf="cart$ | async as cart"
+          matBadgeColor="warn"
+          matBadgeOverlap="false"
+          [matBadge]="cart.totalQuantity"
+        ></span>
+      </button>
 
       <button *ngIf="user" mat-button routerLink="/my/order">My Orders</button>
       <button *ngIf="user && user.isAdmin" mat-button [matMenuTriggerFor]="menu">Admin</button>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { ProductModel } from '../modes/product.model';
+import { Product } from '../models/product';
 import { map } from 'rxjs/operators';
 import { convertToArray } from '../utils/convert';
 import { Observable } from 'rxjs';
@@ -13,11 +13,11 @@ export class ProductService {
   constructor(private db: AngularFireDatabase) {
   }
 
-  create(product: ProductModel): void {
+  create(product: Product): void {
     this.db.list('/products').push(product);
   }
 
-  update(productId: string, product: ProductModel): void {
+  update(productId: string, product: Product): void {
     this.db.object('/products/' + productId).update(product);
   }
 
@@ -25,13 +25,13 @@ export class ProductService {
     this.db.object('/products/' + productId).remove();
   }
 
-  getAll(): Observable<ProductModel[]> {
+  getAll(): Observable<Product[]> {
     return this.db.object('/products').valueChanges().pipe(
       map(convertToArray)
     );
   }
 
-  get(productId: string): Observable<ProductModel> {
-    return this.db.object<ProductModel>('/products/' + productId).valueChanges();
+  get(productId: string): Observable<Product> {
+    return this.db.object<Product>('/products/' + productId).valueChanges();
   }
 }

@@ -1,0 +1,19 @@
+<div class="update-quantity">
+  <button
+    mat-raised-button
+    color="primary"
+
+    (click)="removeFromCard()"
+  >
+    -
+  </button>
+  <div class="quantity">{{shoppingCart.getQuantity(product)}} in card</div>
+  <button
+    mat-raised-button
+    color="primary"
+
+    (click)="addToCard()"
+  >
+    +
+  </button>
+</div>

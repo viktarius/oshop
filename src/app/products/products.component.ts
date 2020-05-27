@@ -1,28 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../core/services/product.service';
 import { Observable } from 'rxjs';
-import { ProductModel } from '../core/modes/product.model';
+import { Product } from '../core/models/product';
 import { CategoryService } from '../core/services/category.service';
-import { CategoryModel } from '../core/modes/category.model';
+import { CategoryModel } from '../core/models/category.model';
+import { ShoppingCartService } from '../core/services/shopping-cart.service';
+import { ShoppingCart } from '../core/models/shopping-cart.model';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
+
 export class ProductsComponent implements OnInit {
-  products: ProductModel[] = [];
-  filterProducts: ProductModel[] = [];
-  // products$: Observable<ProductModel[]>;
+  products: Product[] = [];
+  filterProducts: Product[] = [];
   categories$: Observable<CategoryModel[]>;
+  cart$: Observable<ShoppingCart>;
 
   constructor(private productService: ProductService,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryService,
+              private shoppingCardService: ShoppingCartService) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.productService.getAll().subscribe(products => this.filterProducts = this.products = products);
     this.categories$ = this.categoryService.getAll();
+    this.cart$ = await this.shoppingCardService.getCart();
   }
 
   categoriesChange(categories): void {
@@ -33,5 +38,4 @@ export class ProductsComponent implements OnInit {
     }
     this.filterProducts = this.products.filter(product => selectedCategories.includes(product.category));
   }
-
 }
