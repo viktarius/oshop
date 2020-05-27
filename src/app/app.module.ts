@@ -33,7 +33,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
-import { ProductCardComponent } from './shared/product-card/product-card.component';
+import { ProductCartComponent } from './shared/product-cart/product-cart.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { QuantityButtonsComponent } from './shared/quantity-buttons/quantity-buttons.component';
 
@@ -51,7 +51,7 @@ import { QuantityButtonsComponent } from './shared/quantity-buttons/quantity-but
     LoginComponent,
     AdminProductFormComponent,
     HeaderComponent,
-    ProductCardComponent,
+    ProductCartComponent,
     QuantityButtonsComponent
   ],
   imports: [

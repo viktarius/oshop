@@ -5,10 +5,10 @@ import { ShoppingCart } from '../../core/models/shopping-cart.model';
 
 @Component({
   selector: 'app-product-card',
-  templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.scss']
+  templateUrl: './product-cart.component.html',
+  styleUrls: ['./product-cart.component.scss']
 })
-export class ProductCardComponent {
+export class ProductCartComponent {
   @Input()
   product: Product;
 
