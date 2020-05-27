@@ -14,14 +14,14 @@ export class ShoppingCartService {
   }
 
   private create() {
-    return this.db.list('/shopping-cards').push({
+    return this.db.list('/shopping-carts').push({
       dateCreated: new Date().getTime()
     });
   }
 
   async getCard() {
     const cardId = await this.getOrCreateCardId();
-    return this.db.object<any>('/shopping-cards/' + cardId).valueChanges()
+    return this.db.object<any>('/shopping-carts/' + cardId).valueChanges()
       .pipe(
         map(x => new ShoppingCart(x.items))
       );
@@ -38,26 +38,31 @@ export class ShoppingCartService {
   }
 
   private getItem(cardId: string, productId: string) {
-    return this.db.object<any>('/shopping-cards/' + cardId + '/items/' + productId);
+    return this.db.object<any>('/shopping-carts/' + cardId + '/items/' + productId);
   }
 
   async addToCard(product: Product) {
-    this.updateItemQuantity(product, +1);
+    this.updateItem(product, +1);
   }
 
   async removeFromCard(product: Product) {
-    this.updateItemQuantity(product, -1);
+    this.updateItem(product, -1);
   }
 
-  private async updateItemQuantity(product: Product, change: number) {
+  private async updateItem(product: Product, change: number) {
     const cardId = await this.getOrCreateCardId();
     const item$ = this.getItem(cardId, product.$key);
     item$.valueChanges().pipe(
       take(1)
     ).subscribe(item => {
-      const p = {...product};
-      delete p.$key;
-      item$.update({product: p, quantity: (item && item.quantity || 0) + change});
+      // const p = {...product};
+      // delete p.$key;
+      item$.update({
+        title: product.title,
+        imageUrl: product.imageUrl,
+        price: product.price,
+        quantity: (item && item.quantity || 0) + change
+      });
     });
   }
 

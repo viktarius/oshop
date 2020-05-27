@@ -35,6 +35,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { ProductCardComponent } from './shared/product-card/product-card.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { QuantityButtonsComponent } from './shared/quantity-buttons/quantity-buttons.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     LoginComponent,
     AdminProductFormComponent,
     HeaderComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    QuantityButtonsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,32 @@
 table{
   width: 100%;
 }
+
+.mat-column-title, .mat-column-quantity, .mat-column-price{
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  overflow-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.mat-column-title {
+   flex: 0 0 30% !important;
+   width: 30% !important;
+ }
+
+.mat-column-quantity {
+  padding: 0 5%;
+  flex: 0 0 30% !important;
+  width: 30% !important;
+}
+
+.mat-column-price {
+  flex: 0 0 30% !important;
+  width: 30% !important;
+}

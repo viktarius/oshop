@@ -25,12 +25,4 @@ export class QuantityButtonsComponent {
   removeFromCard(): void {
     this.shoppingCardService.removeFromCard(this.product);
   }
-
-  getQuantity() {
-    if (!this.shoppingCart) {
-      return 0;
-    }
-    const items = this.shoppingCart.items[this.product.$key];
-    return items ? items.quantity : 0;
-  }
 }

@@ -14,9 +14,9 @@
       {{product.price | currency: 'USD': true}}
     </p>
   </mat-card-content>
-  <mat-card-actions *ngIf="actionItems ">
+  <mat-card-actions *ngIf="shoppingCart && actionItems">
     <button
-      *ngIf="shoppingCart && shoppingCart.getQuantity(product) === 0; else updateQuantity"
+      *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity"
       mat-raised-button
       color="primary"
 
