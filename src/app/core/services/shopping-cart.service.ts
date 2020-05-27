@@ -60,14 +60,17 @@ export class ShoppingCartService {
     item$.valueChanges().pipe(
       take(1)
     ).subscribe(item => {
-      // const p = {...product};
-      // delete p.$key;
-      item$.update({
-        title: product.title,
-        imageUrl: product.imageUrl,
-        price: product.price,
-        quantity: (item && item.quantity || 0) + change
-      });
+      const quantity = (item && item.quantity || 0) + change;
+      if (quantity === 0) {
+        item$.remove();
+      } else {
+        item$.update({
+          title: product.title,
+          imageUrl: product.imageUrl,
+          price: product.price,
+          quantity
+        });
+      }
     });
   }
 }
