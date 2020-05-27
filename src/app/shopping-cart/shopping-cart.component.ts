@@ -17,7 +17,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.cart$ = await this.shoppingCardService.getCard();
+    this.cart$ = await this.shoppingCardService.getCart();
     this.cart$.subscribe(items => {
       this.cart = items;
     });
@@ -29,6 +29,10 @@ export class ShoppingCartComponent implements OnInit {
 
   getTotalPrice() {
     return this.cart.items.reduce((acc, item) => acc += item.totalPrice, 0);
+  }
+
+  clearCart() {
+    this.shoppingCardService.clearCart();
   }
 
 }

@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     this.productService.getAll().subscribe(products => this.filterProducts = this.products = products);
     this.categories$ = this.categoryService.getAll();
-    this.subscription = (await this.shoppingCardService.getCard())
+    this.subscription = (await this.shoppingCardService.getCart())
       .subscribe(card => this.card = card);
   }
 

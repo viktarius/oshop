@@ -13,18 +13,31 @@ export class ShoppingCartService {
   constructor(private db: AngularFireDatabase) {
   }
 
+  async getCart() {
+    const cartId = await this.getOrCreateCardId();
+    return this.db.object<any>('/shopping-carts/' + cartId).valueChanges()
+      .pipe(
+        map(x => new ShoppingCart(x.items))
+      );
+  }
+
+  async clearCart() {
+    const cartId = await this.getOrCreateCardId();
+    this.db.object('/shopping-carts/' + cartId + '/items').remove();
+  }
+
+  async addToCard(product: Product) {
+    this.updateItem(product, +1);
+  }
+
+  async removeFromCard(product: Product) {
+    this.updateItem(product, -1);
+  }
+
   private create() {
     return this.db.list('/shopping-carts').push({
       dateCreated: new Date().getTime()
     });
-  }
-
-  async getCard() {
-    const cardId = await this.getOrCreateCardId();
-    return this.db.object<any>('/shopping-carts/' + cardId).valueChanges()
-      .pipe(
-        map(x => new ShoppingCart(x.items))
-      );
   }
 
   private async getOrCreateCardId(): Promise<string> {
@@ -39,14 +52,6 @@ export class ShoppingCartService {
 
   private getItem(cardId: string, productId: string) {
     return this.db.object<any>('/shopping-carts/' + cardId + '/items/' + productId);
-  }
-
-  async addToCard(product: Product) {
-    this.updateItem(product, +1);
-  }
-
-  async removeFromCard(product: Product) {
-    this.updateItem(product, -1);
   }
 
   private async updateItem(product: Product, change: number) {
@@ -65,5 +70,4 @@ export class ShoppingCartService {
       });
     });
   }
-
 }
