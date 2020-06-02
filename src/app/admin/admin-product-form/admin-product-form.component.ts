@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'ngx-custom-validators';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { CategoryModel } from '../../core/models/category.model';
+import { Category } from '../../core/models/category.model';
 import { CategoryService } from '../../core/services/category.service';
 import { ProductService } from '../../core/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,7 +17,7 @@ import { MyErrorStateMatcher } from '../../core/helpers/error-state-matcher';
 })
 export class AdminProductFormComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
-  categories$: Observable<CategoryModel[]>;
+  categories$: Observable<Category[]>;
   productForm: FormGroup;
   id: string;
 
@@ -30,13 +30,13 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categories$ = this.categoryService.getAll();
     this.productForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       price: ['', [Validators.required, CustomValidators.min(0)]],
       category: ['', [Validators.required]],
       imageUrl: ['', [Validators.required, CustomValidators.url]]
     });
+    this.categories$ = this.categoryService.getAll();
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
       this.productService.get(this.id)
@@ -48,7 +48,6 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   save(): void {
-    // console.log(this.productForm);
     if (this.id) {
       this.productService.update(this.id, this.productForm.value);
     } else {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Product } from '../models/product';
+import { Product } from '../models/product.model';
 import { map } from 'rxjs/operators';
 import { convertToArray } from '../utils/convert';
 import { Observable } from 'rxjs';

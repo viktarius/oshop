@@ -16,10 +16,6 @@ form {
   margin: auto;
 }
 
-.full-width {
-  width: 100%;
-}
-
 @media screen and (max-width: 1000px) {
   .product-form {
     grid-template-columns: 1fr;

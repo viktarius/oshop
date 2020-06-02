@@ -3,8 +3,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import { Observable, of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { UserModel } from '../models/user.model';
-import { switchMap } from 'rxjs/operators';
+import { User } from '../models/user.model';
+import { map, switchMap } from 'rxjs/operators';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -30,11 +30,13 @@ export class AuthService {
     this.afAuth.auth.signOut();
   }
 
-  get user$(): Observable<UserModel> {
+  get user$(): Observable<User> {
     return this.stateUser$.pipe(
       switchMap(user => {
         if (user) {
-          return this.userService.get(user.uid).valueChanges();
+          return this.userService.get(user.uid).valueChanges().pipe(
+            map(usr => new User(user.uid, usr))
+          );
         }
         return of(null);
       })

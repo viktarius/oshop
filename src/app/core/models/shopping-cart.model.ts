@@ -1,5 +1,5 @@
 import { ShoppingCartItem } from './shopping-cart-item.model';
-import { Product } from './product';
+import { Product } from './product.model';
 
 export class ShoppingCart {
   items: ShoppingCartItem[] = [];
@@ -8,7 +8,7 @@ export class ShoppingCart {
     this.itemsMap = this.itemsMap || {};
     for (const productId in itemsMap) {
       const item = itemsMap[productId];
-      this.items.push(new ShoppingCartItem( { ...item, $key: productId }));
+      this.items.push(new ShoppingCartItem({...item, $key: productId}));
     }
   }
 
@@ -16,7 +16,7 @@ export class ShoppingCart {
     return Object.keys(this.items);
   }
 
-  getQuantity(product: Product) {
+  getQuantity(product: Product): number {
     const items = this.itemsMap[product.$key];
     return items ? items.quantity : 0;
   }
@@ -27,5 +27,13 @@ export class ShoppingCart {
       count += this.items[productId].quantity;
     }
     return count + '';
+  }
+
+  get totalItemsCount(): number {
+    return this.items.length;
+  }
+
+  get totalPrice(): number {
+    return this.items.reduce((acc, item) => acc += item.totalPrice, 0);
   }
 }

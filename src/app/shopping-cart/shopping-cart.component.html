@@ -46,6 +46,14 @@
   </table>
   <div class="control-panel">
     <button
+      *ngIf="cart.items.length"
+      mat-raised-button
+      color="accent"
+      routerLink="/check-out"
+    >Check out
+    </button>
+    <button
+      *ngIf="cart.items.length"
       mat-raised-button
       color="warn"
       (click)="clearCart()"

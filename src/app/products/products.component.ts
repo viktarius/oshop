@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../core/services/product.service';
 import { Observable } from 'rxjs';
-import { Product } from '../core/models/product';
+import { Product } from '../core/models/product.model';
 import { CategoryService } from '../core/services/category.service';
-import { CategoryModel } from '../core/models/category.model';
+import { Category } from '../core/models/category.model';
 import { ShoppingCartService } from '../core/services/shopping-cart.service';
 import { ShoppingCart } from '../core/models/shopping-cart.model';
 
@@ -16,7 +16,7 @@ import { ShoppingCart } from '../core/models/shopping-cart.model';
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
   filterProducts: Product[] = [];
-  categories$: Observable<CategoryModel[]>;
+  categories$: Observable<Category[]>;
   cart$: Observable<ShoppingCart>;
 
   constructor(private productService: ProductService,

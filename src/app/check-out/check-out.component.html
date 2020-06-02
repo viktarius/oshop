@@ -1,1 +1,9 @@
-<p>check-out works!</p>
+<h2>Shipping</h2>
+<div class="check-out">
+  <div class="check-out--form">
+      <check-out-form (onSubmitForm)="placeOrder($event)"></check-out-form>
+  </div>
+  <div class="check-out--order" *ngIf="cart">
+    <check-out-summary [cart]="cart"></check-out-summary>
+  </div>
+</div>
