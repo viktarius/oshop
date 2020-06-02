@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'ngx-custom-validators';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -30,13 +30,13 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categories$ = this.categoryService.getAll();
     this.productForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       price: ['', [Validators.required, CustomValidators.min(0)]],
       category: ['', [Validators.required]],
       imageUrl: ['', [Validators.required, CustomValidators.url]]
     });
+    this.categories$ = this.categoryService.getAll();
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
       this.productService.get(this.id)
