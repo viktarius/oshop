@@ -36,7 +36,8 @@ import { MatListModule } from '@angular/material/list';
 import { ProductCartComponent } from './shared/product-cart/product-cart.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { QuantityButtonsComponent } from './shared/quantity-buttons/quantity-buttons.component';
-import { ShoppingCartSummaryComponent } from './check-out/shopping-cart-summary/shopping-cart-summary.component';
+import { CheckOutSummaryComponent } from './check-out/check-out-summary/check-out-summary.component';
+import { CheckOutFormComponent } from './check-out/check-out-form/check-out-form.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ShoppingCartSummaryComponent } from './check-out/shopping-cart-summary/
     HeaderComponent,
     ProductCartComponent,
     QuantityButtonsComponent,
-    ShoppingCartSummaryComponent
+    CheckOutSummaryComponent,
+    CheckOutFormComponent
   ],
   imports: [
     BrowserModule,
