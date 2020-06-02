@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { User } from '../../core/models/user';
+import { User } from '../../core/models/user.model';
 import { AuthService } from '../../core/services/auth.service';
 import { ShoppingCartService } from '../../core/services/shopping-cart.service';
 import { ShoppingCart } from '../../core/models/shopping-cart.model';

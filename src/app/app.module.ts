@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { AngularFireModule} from 'angularfire2';
-import { AngularFireDatabaseModule} from 'angularfire2/database';
-import { AngularFireAuthModule} from 'angularfire2/auth';
-import {MatTableModule} from '@angular/material/table';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,6 +36,7 @@ import { MatListModule } from '@angular/material/list';
 import { ProductCartComponent } from './shared/product-cart/product-cart.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { QuantityButtonsComponent } from './shared/quantity-buttons/quantity-buttons.component';
+import { ShoppingCartSummaryComponent } from './check-out/shopping-cart-summary/shopping-cart-summary.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { QuantityButtonsComponent } from './shared/quantity-buttons/quantity-but
     AdminProductFormComponent,
     HeaderComponent,
     ProductCartComponent,
-    QuantityButtonsComponent
+    QuantityButtonsComponent,
+    ShoppingCartSummaryComponent
   ],
   imports: [
     BrowserModule,

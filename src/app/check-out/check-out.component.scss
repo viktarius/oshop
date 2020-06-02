@@ -1,0 +1,12 @@
+.check-out {
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 1000px) {
+  .check-out {
+    grid-template-columns: 1fr;
+  }
+}
+
