@@ -5,6 +5,7 @@ import { ShoppingCart } from '../core/models/shopping-cart.model';
 import { OrderService } from '../core/services/order.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from '../core/helpers/error-state-matcher';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-check-out',
@@ -13,12 +14,13 @@ import { MyErrorStateMatcher } from '../core/helpers/error-state-matcher';
 })
 export class CheckOutComponent implements OnInit, OnDestroy {
   matcher = new MyErrorStateMatcher();
+  subscriptions: Subscription;
   orderForm: FormGroup;
-  shipping = {};
   cart: ShoppingCart;
-  subscription: Subscription;
+  userId: string;
 
   constructor(private formBuilder: FormBuilder,
+              private authService: AuthService,
               private shoppingCardService: ShoppingCartService,
               private orderService: OrderService) {
   }
@@ -31,11 +33,13 @@ export class CheckOutComponent implements OnInit, OnDestroy {
       city: ['', [Validators.required]]
     });
 
-    this.subscription = (await this.shoppingCardService.getCart()).subscribe(cart => this.cart = cart);
+    this.subscriptions = (await this.shoppingCardService.getCart()).subscribe(cart => this.cart = cart);
+    this.subscriptions.add(this.authService.user$.subscribe(user => this.userId = user.uid));
   }
 
   placeOrder() {
     const order = {
+      userId: this.userId,
       datePlaced: new Date().getTime(),
       shipping: this.orderForm.value,
       items: this.cart.items.map(i => ({
@@ -53,7 +57,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 
   get name() {

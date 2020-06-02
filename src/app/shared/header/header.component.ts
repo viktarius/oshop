@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UserModel } from '../../core/models/user.model';
+import { User } from '../../core/models/user';
 import { AuthService } from '../../core/services/auth.service';
 import { ShoppingCartService } from '../../core/services/shopping-cart.service';
 import { ShoppingCart } from '../../core/models/shopping-cart.model';
@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   @Input() theme;
   @Output() onThemeChange: EventEmitter<boolean> = new EventEmitter();
 
-  user: UserModel;
+  user: User;
   cart$: Observable<ShoppingCart>;
 
   constructor(private auth: AuthService,

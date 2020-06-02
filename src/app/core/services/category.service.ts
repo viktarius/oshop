@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { CategoryModel } from '../models/category.model';
+import { Category } from '../models/category';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { convertToArray } from '../utils/convert';
@@ -13,7 +13,7 @@ export class CategoryService {
   constructor(private db: AngularFireDatabase) {
   }
 
-  getAll(): Observable<CategoryModel[]> {
+  getAll(): Observable<Category[]> {
     return this.db.object('/categories').valueChanges().pipe(
       map(convertToArray));
   }

@@ -4,7 +4,7 @@ import { CustomValidators } from 'ngx-custom-validators';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { CategoryModel } from '../../core/models/category.model';
+import { Category } from '../../core/models/category';
 import { CategoryService } from '../../core/services/category.service';
 import { ProductService } from '../../core/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,7 +17,7 @@ import { MyErrorStateMatcher } from '../../core/helpers/error-state-matcher';
 })
 export class AdminProductFormComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
-  categories$: Observable<CategoryModel[]>;
+  categories$: Observable<Category[]>;
   productForm: FormGroup;
   id: string;
 
