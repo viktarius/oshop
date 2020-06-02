@@ -48,7 +48,6 @@ export class AdminProductFormComponent implements OnInit {
   }
 
   save(): void {
-    // console.log(this.productForm);
     if (this.id) {
       this.productService.update(this.id, this.productForm.value);
     } else {

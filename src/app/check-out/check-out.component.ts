@@ -6,6 +6,7 @@ import { OrderService } from '../core/services/order.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from '../core/helpers/error-state-matcher';
 import { AuthService } from '../core/services/auth.service';
+import { Order } from '../core/models/order.model';
 
 @Component({
   selector: 'app-check-out',
@@ -29,30 +30,16 @@ export class CheckOutComponent implements OnInit, OnDestroy {
     this.orderForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       line1: ['', [Validators.required]],
-      line2: ['', []],
+      line2: [''],
       city: ['', [Validators.required]]
     });
 
     this.subscriptions = (await this.shoppingCardService.getCart()).subscribe(cart => this.cart = cart);
-    this.subscriptions.add(this.authService.user$.subscribe(user => this.userId = user.uid));
+    this.authService.user$.subscribe(user => this.userId = user.uid);
   }
 
   placeOrder() {
-    const order = {
-      userId: this.userId,
-      datePlaced: new Date().getTime(),
-      shipping: this.orderForm.value,
-      items: this.cart.items.map(i => ({
-        product: {
-          title: i.title,
-          imageUrl: i.imageUrl,
-          price: i.price
-        },
-        quantity: i.quantity,
-        totalPrice: i.totalPrice
-      }))
-    };
-
+    const order = new Order(this.userId, this.orderForm.value, this.cart);
     this.orderService.storeOrder(order);
   }
 
