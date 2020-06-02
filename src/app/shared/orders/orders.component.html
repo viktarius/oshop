@@ -1,0 +1,22 @@
+Orders:
+<mat-table [dataSource]="orders" class="mat-elevation-z8">
+  <ng-container matColumnDef="customer">
+    <mat-header-cell *matHeaderCellDef> Customer</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.shipping.name}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <mat-header-cell *matHeaderCellDef> Date</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{date(element.datePlace)}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="view">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-raised-button color="accent" [routerLink]="'/order/'+element.userId">View</button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

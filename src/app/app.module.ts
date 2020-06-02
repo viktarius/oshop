@@ -38,6 +38,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { QuantityButtonsComponent } from './shared/quantity-buttons/quantity-buttons.component';
 import { CheckOutSummaryComponent } from './check-out/check-out-summary/check-out-summary.component';
 import { CheckOutFormComponent } from './check-out/check-out-form/check-out-form.component';
+import { OrdersComponent } from './shared/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CheckOutFormComponent } from './check-out/check-out-form/check-out-form
     ProductCartComponent,
     QuantityButtonsComponent,
     CheckOutSummaryComponent,
-    CheckOutFormComponent
+    CheckOutFormComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
