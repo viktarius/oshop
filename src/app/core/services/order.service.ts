@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { ShoppingCartService } from './shopping-cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,10 +8,13 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 export class OrderService {
 
-  constructor(private db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase,
+              private shoppingCardService: ShoppingCartService) {
   }
 
-  storeOrder(order) {
-    return this.db.list('/orders').push(order);
+  async placeOrder(order) {
+    const result = await this.db.list('/orders').push(order);
+    this.shoppingCardService.clearCart();
+    return result;
   }
 }

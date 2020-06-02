@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from '../core/helpers/error-state-matcher';
 import { AuthService } from '../core/services/auth.service';
 import { Order } from '../core/models/order.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-check-out',
@@ -23,7 +24,8 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
               private shoppingCardService: ShoppingCartService,
-              private orderService: OrderService) {
+              private orderService: OrderService,
+              private router: Router) {
   }
 
   async ngOnInit() {
@@ -38,9 +40,10 @@ export class CheckOutComponent implements OnInit, OnDestroy {
     this.authService.user$.subscribe(user => this.userId = user.uid);
   }
 
-  placeOrder() {
+  async placeOrder() {
     const order = new Order(this.userId, this.orderForm.value, this.cart);
-    this.orderService.storeOrder(order);
+    const result = await this.orderService.placeOrder(order);
+    this.router.navigate(['/order-success', result.key]);
   }
 
   ngOnDestroy(): void {
