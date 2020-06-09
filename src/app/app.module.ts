@@ -23,7 +23,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { HeaderComponent } from './shared/header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -32,12 +31,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
-import { ProductCartComponent } from './shared/product-cart/product-cart.component';
 import { MatBadgeModule } from '@angular/material/badge';
-import { QuantityButtonsComponent } from './shared/quantity-buttons/quantity-buttons.component';
 import { CheckOutSummaryComponent } from './check-out/check-out-summary/check-out-summary.component';
 import { CheckOutFormComponent } from './check-out/check-out-form/check-out-form.component';
-import { OrdersComponent } from './shared/orders/orders.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -51,12 +48,8 @@ import { OrdersComponent } from './shared/orders/orders.component';
     ShoppingCartComponent,
     LoginComponent,
     AdminProductFormComponent,
-    HeaderComponent,
-    ProductCartComponent,
-    QuantityButtonsComponent,
     CheckOutSummaryComponent,
-    CheckOutFormComponent,
-    OrdersComponent
+    CheckOutFormComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +59,8 @@ import { OrdersComponent } from './shared/orders/orders.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
+    SharedModule,
+
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
@@ -84,4 +79,5 @@ import { OrdersComponent } from './shared/orders/orders.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
