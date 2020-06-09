@@ -9,7 +9,6 @@ import { MatTableModule } from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
@@ -43,7 +42,6 @@ import { OrdersComponent } from './shared/orders/orders.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     ProductsComponent,
     CheckOutComponent,
     OrderSuccessComponent,
