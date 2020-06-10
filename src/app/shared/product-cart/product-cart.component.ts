@@ -4,7 +4,7 @@ import { ShoppingCartService } from '../../core/services/shopping-cart.service';
 import { ShoppingCart } from '../../core/models/shopping-cart.model';
 
 @Component({
-  selector: 'app-product-card',
+  selector: 'product-card',
   templateUrl: './product-cart.component.html',
   styleUrls: ['./product-cart.component.scss']
 })

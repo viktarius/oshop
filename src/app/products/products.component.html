@@ -7,7 +7,7 @@
 </div>
 <div class="products" *ngIf="cart$ | async as cart">
   <div class="product-card" *ngFor="let p of filterProducts">
-    <app-product-card [product]="p" [actionItems]="true" [shoppingCart]="cart"></app-product-card>
+    <product-card [product]="p" [actionItems]="true" [shoppingCart]="cart"></product-card>
   </div>
 </div>
 

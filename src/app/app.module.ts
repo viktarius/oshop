@@ -13,11 +13,8 @@ import { ProductsComponent } from './products/products.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { LoginComponent } from './login/login.component';
-import { AdminProductFormComponent } from './admin/admin-product-form/admin-product-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -35,6 +32,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { CheckOutSummaryComponent } from './check-out/check-out-summary/check-out-summary.component';
 import { CheckOutFormComponent } from './check-out/check-out-form/check-out-form.component';
 import { SharedModule } from './shared/shared.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -43,11 +41,8 @@ import { SharedModule } from './shared/shared.module';
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
     ShoppingCartComponent,
     LoginComponent,
-    AdminProductFormComponent,
     CheckOutSummaryComponent,
     CheckOutFormComponent
   ],
@@ -60,6 +55,7 @@ import { SharedModule } from './shared/shared.module';
     AngularFireAuthModule,
     BrowserAnimationsModule,
     SharedModule,
+    AdminModule,
 
     MatTableModule,
     MatSortModule,
