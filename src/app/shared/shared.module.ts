@@ -9,7 +9,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 
-import { HeaderComponent } from './header/header.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ProductCartComponent } from './product-cart/product-cart.component';
 import { QuantityButtonsComponent } from './quantity-buttons/quantity-buttons.component';
@@ -17,7 +16,6 @@ import { QuantityButtonsComponent } from './quantity-buttons/quantity-buttons.co
 @NgModule({
   declarations: [
     OrdersComponent,
-    HeaderComponent,
     ProductCartComponent,
     QuantityButtonsComponent
   ],
@@ -34,7 +32,6 @@ import { QuantityButtonsComponent } from './quantity-buttons/quantity-buttons.co
   ],
   exports: [
     OrdersComponent,
-    HeaderComponent,
     ProductCartComponent,
     QuantityButtonsComponent
   ]

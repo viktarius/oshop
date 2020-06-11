@@ -31,6 +31,7 @@ import { ProductsModule } from './products/products.module';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { LoginModule } from './login/login.module';
 import { CheckOutModule } from './check-out/check-out.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -46,8 +47,9 @@ import { CheckOutModule } from './check-out/check-out.module';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
-    SharedModule,
     LoginModule,
+    CoreModule,
+    SharedModule,
     AdminModule,
     ProductsModule,
     ShoppingCartModule,
