@@ -12,7 +12,6 @@ import { environment } from '../environments/environment';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSortModule } from '@angular/material/sort';
@@ -33,6 +32,7 @@ import { CheckOutFormComponent } from './check-out/check-out-form/check-out-form
 import { SharedModule } from './shared/shared.module';
 import { AdminModule } from './admin/admin.module';
 import { ProductsModule } from './products/products.module';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,6 @@ import { ProductsModule } from './products/products.module';
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
-    ShoppingCartComponent,
     LoginComponent,
     CheckOutSummaryComponent,
     CheckOutFormComponent
@@ -56,6 +55,7 @@ import { ProductsModule } from './products/products.module';
     SharedModule,
     AdminModule,
     ProductsModule,
+    ShoppingCartModule,
 
     MatTableModule,
     MatSortModule,
