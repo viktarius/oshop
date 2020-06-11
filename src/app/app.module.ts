@@ -9,7 +9,6 @@ import { MatTableModule } from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { ProductsComponent } from './products/products.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
@@ -33,11 +32,11 @@ import { CheckOutSummaryComponent } from './check-out/check-out-summary/check-ou
 import { CheckOutFormComponent } from './check-out/check-out-form/check-out-form.component';
 import { SharedModule } from './shared/shared.module';
 import { AdminModule } from './admin/admin.module';
+import { ProductsModule } from './products/products.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsComponent,
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
@@ -56,6 +55,7 @@ import { AdminModule } from './admin/admin.module';
     BrowserAnimationsModule,
     SharedModule,
     AdminModule,
+    ProductsModule,
 
     MatTableModule,
     MatSortModule,
