@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { ShoppingCartComponent } from './shopping-cart.component';
 import { SharedModule } from '../shared/shared.module';
 
-
 @NgModule({
   declarations: [
     ShoppingCartComponent
