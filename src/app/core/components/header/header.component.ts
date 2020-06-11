@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { User } from '../../core/models/user.model';
-import { AuthService } from '../../core/services/auth.service';
-import { ShoppingCartService } from '../../core/services/shopping-cart.service';
-import { ShoppingCart } from '../../core/models/shopping-cart.model';
+import { User } from '../../models/user.model';
+import { AuthService } from '../../services/auth.service';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { ShoppingCart } from '../../models/shopping-cart.model';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-header',
+  selector: 'header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

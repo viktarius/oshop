@@ -1,64 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { MatTableModule } from '@angular/material/table';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { HomeComponent } from './home/home.component';
-import { ProductsComponent } from './products/products.component';
-import { CheckOutComponent } from './check-out/check-out.component';
-import { OrderSuccessComponent } from './order-success/order-success.component';
-import { MyOrdersComponent } from './my-orders/my-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { LoginComponent } from './login/login.component';
-import { AdminProductFormComponent } from './admin/admin-product-form/admin-product-form.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSortModule } from '@angular/material/sort';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
-import { HeaderComponent } from './shared/header/header.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatSelectModule } from '@angular/material/select';
-import { MatListModule } from '@angular/material/list';
-import { ProductCartComponent } from './shared/product-cart/product-cart.component';
-import { MatBadgeModule } from '@angular/material/badge';
-import { QuantityButtonsComponent } from './shared/quantity-buttons/quantity-buttons.component';
-import { CheckOutSummaryComponent } from './check-out/check-out-summary/check-out-summary.component';
-import { CheckOutFormComponent } from './check-out/check-out-form/check-out-form.component';
-import { OrdersComponent } from './shared/orders/orders.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
+import { AdminModule } from './admin/admin.module';
+import { ProductsModule } from './products/products.module';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
+import { LoginModule } from './login/login.module';
+import { CheckOutModule } from './check-out/check-out.module';
+import { CoreModule } from './core/core.module';
+import { OrderSuccessModule } from './order-success/order-success.module';
+import { MyOrdersModule } from './my-orders/my-orders.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ProductsComponent,
-    CheckOutComponent,
-    OrderSuccessComponent,
-    MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
-    ShoppingCartComponent,
-    LoginComponent,
-    AdminProductFormComponent,
-    HeaderComponent,
-    ProductCartComponent,
-    QuantityButtonsComponent,
-    CheckOutSummaryComponent,
-    CheckOutFormComponent,
-    OrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -68,22 +32,18 @@ import { OrdersComponent } from './shared/orders/orders.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatInputModule,
-    MatGridListModule,
-    MatCardModule,
-    MatSelectModule,
-    MatListModule,
-    MatBadgeModule
+    LoginModule,
+    CoreModule,
+    SharedModule,
+    AdminModule,
+    ProductsModule,
+    ShoppingCartModule,
+    CheckOutModule,
+    OrderSuccessModule,
+    MyOrdersModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
