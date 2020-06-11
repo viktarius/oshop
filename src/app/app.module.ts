@@ -12,7 +12,6 @@ import { environment } from '../environments/environment';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
-import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -33,6 +32,7 @@ import { SharedModule } from './shared/shared.module';
 import { AdminModule } from './admin/admin.module';
 import { ProductsModule } from './products/products.module';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,6 @@ import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
-    LoginComponent,
     CheckOutSummaryComponent,
     CheckOutFormComponent
   ],
@@ -53,6 +52,7 @@ import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
     AngularFireAuthModule,
     BrowserAnimationsModule,
     SharedModule,
+    LoginModule,
     AdminModule,
     ProductsModule,
     ShoppingCartModule,
