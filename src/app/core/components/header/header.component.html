@@ -20,7 +20,11 @@
         ></span>
       </button>
 
-      <button *ngIf="user" mat-button routerLink="/my/order">My Orders</button>
+      <button *ngIf="user" mat-button routerLink="/my/order">
+        <mat-icon aria-hidden="false">
+          assignment
+        </mat-icon>
+      </button>
       <button *ngIf="user && user.isAdmin" mat-button [matMenuTriggerFor]="menu">Admin</button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item routerLink="/admin/orders">Manage Orders</button>
