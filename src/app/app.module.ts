@@ -9,7 +9,6 @@ import { MatTableModule } from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,22 +25,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
-import { CheckOutSummaryComponent } from './check-out/check-out-summary/check-out-summary.component';
-import { CheckOutFormComponent } from './check-out/check-out-form/check-out-form.component';
 import { SharedModule } from './shared/shared.module';
 import { AdminModule } from './admin/admin.module';
 import { ProductsModule } from './products/products.module';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { LoginModule } from './login/login.module';
+import { CheckOutModule } from './check-out/check-out.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
-    CheckOutSummaryComponent,
-    CheckOutFormComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +51,7 @@ import { LoginModule } from './login/login.module';
     AdminModule,
     ProductsModule,
     ShoppingCartModule,
+    CheckOutModule,
 
     MatTableModule,
     MatSortModule,
