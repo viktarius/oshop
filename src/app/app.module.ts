@@ -9,7 +9,6 @@ import { MatTableModule } from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSortModule } from '@angular/material/sort';
@@ -32,11 +31,11 @@ import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { LoginModule } from './login/login.module';
 import { CheckOutModule } from './check-out/check-out.module';
 import { CoreModule } from './core/core.module';
+import { OrderSuccessModule } from './order-success/order-success.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OrderSuccessComponent,
     MyOrdersComponent,
   ],
   imports: [
@@ -54,6 +53,7 @@ import { CoreModule } from './core/core.module';
     ProductsModule,
     ShoppingCartModule,
     CheckOutModule,
+    OrderSuccessModule,
 
     MatTableModule,
     MatSortModule,
